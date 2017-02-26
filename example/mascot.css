@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.mascotjs {
+  bottom: 30px;
+  display: block;
+  position: absolute;
+  right: 30px;
+}
+
+.mascotjs .mascotjs-mascot {
+  background-color: #800099;
+  border-radius: 50%;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+}
+
+.mascotjs .mascotjs-title {
+  background-color: #800099;
+  display: inline-block;
+  height: 80px;
+}
