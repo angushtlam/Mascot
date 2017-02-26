@@ -44,8 +44,7 @@ router.post('/login', (req, res) => {
         message: 'An internal error occurred while logging in...'
       })
 
-      console.log(err)
-      return
+      return console.log(err)
     }
 
     const hashedPassword = sha256(password + secretKey)

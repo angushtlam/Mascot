@@ -42,3 +42,8 @@ input {
 form {
   padding: 0 100px;
 }
+
+.analyics-bullets {
+  width: 50%;
+  margin: 0 auto;
+}

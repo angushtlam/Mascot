@@ -5,18 +5,23 @@ const path = require('path')
 
 // Custom imports
 const Settings = require('../db/models/settings')
+const User = require('../db/models/user')
 
 const { isUserAuthenticated } = require('../middlewares/auth')
 const backend = require('../../backend')
+
+const config = require('../config')
+
+const secretKey = config.secretKey
 
 router.get('/', isUserAuthenticated, (req, res) => {
   // Render the file if they don't have one.
   const username = req.session.user.username
 
-  // Process job if one doesn't exist.
+  // Process job if one doesn't exist, this means the user is new.
   if (!fs.existsSync(path.resolve(__dirname, '..', 'cdn', 'js', username + '.js')) ||
       !fs.existsSync(path.resolve(__dirname, '..', 'cdn', 'css', username + '.css'))) {
-    queueScriptUpdate(username, config)
+    queueScriptUpdate(username)
   }
 
   res.render(path.resolve(__dirname, '..', 'templates', 'dashboard.ejs'), {
@@ -71,7 +76,6 @@ router.post('/mascot', isUserAuthenticated, (req, res) => {
     mascotMoveDelayInMs: req.body.mascotMoveDelayInMs,
     mascotMoveTimeInMs: req.body.mascotMoveTimeInMs
   }
-  console.log(config)
 
   Settings.findOneAndUpdate({ _id: username }, {
     tooltipColor: config.tooltipColor,
@@ -90,6 +94,33 @@ router.post('/mascot', isUserAuthenticated, (req, res) => {
     // Update scripts.
     queueScriptUpdate(username, config)
   })
+})
+
+router.get('/account', isUserAuthenticated, (req, res) => {
+  res.render(path.resolve(__dirname, '..', 'templates', 'dashboard', 'account.ejs'), {
+    message: ''
+  })
+})
+
+router.post('/account', isUserAuthenticated, (req, res) => {
+  const username = req.session.user.username
+
+  if (req.body.password !== req.body.passwordAgain) {
+    res.render(path.resolve(__dirname, '..', 'templates', 'dashboard', 'account.ejs'), {
+      message: 'Passwords did not match.'
+    })
+  }
+
+  User.findOneAndUpdate({ username: username }, { password: sha256(req.body.password + secretKey) }).exec((err, q) => {
+    if (err) return console.log(err)
+    res.render(path.resolve(__dirname, '..', 'templates', 'dashboard', 'account.ejs'), {
+      message: 'Your password have been updated!'
+    })
+  })
+})
+
+router.get('/analytics', isUserAuthenticated, (req, res) => {
+  res.render(path.resolve(__dirname, '..', 'templates', 'dashboard', 'analytics.ejs'))
 })
 
 function queueScriptUpdate(username, config = {}) {

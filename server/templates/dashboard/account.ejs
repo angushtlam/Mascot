@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account | MascotJS</title>
+  <%- include ../partials/meta.ejs %>
+  <link rel="stylesheet" type="text/css" href="/static/styles/dashboard.css">
+</head>
+
+<body>
+<%- include ../partials/dashboard/header.ejs %>
+
+<div class="dashboard-background"></div>
+
+<div class="container content-wrapper">
+  <div class="content">
+    <h1>Account Settings</h1>
+    <h3>Update your general account settings here!</h3>
+    <p><%= message ? message : '' %></p>
+
+    <br />
+    <br />
+    <br />
+
+    <form method="POST">
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Password</label>
+        <div class="col-8">
+          <input class="form-control" name="password" type="password" placeholder="hunter2">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Password Again</label>
+        <div class="col-8">
+          <input class="form-control" name="passwordAgain" type="password" placeholder="hunter2">
+        </div>
+      </div>
+
+      <br />
+      <br />
+
+      <button class="btn btn-primary" type="submit">Update Settings</button>
+    </form>
+  </div>
+</div>
+
+<%- include ../partials/scripts.ejs %>
+</body>

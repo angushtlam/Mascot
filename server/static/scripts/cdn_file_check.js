@@ -23,5 +23,5 @@ $(document).ready(function () {
   }
 
   fileCheckHelper()
-  checkInterval = setInterval(fileCheckHelper, 1000)
+  checkInterval = setInterval(fileCheckHelper, 3000)
 })
