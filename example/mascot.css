@@ -5,22 +5,28 @@ body {
 }
 
 .mascotjs {
+  background-color: #800099;
+  border-radius: 30px;
   bottom: 30px;
-  display: block;
+  display: flex;
+  margin: 10px 0 10px 10px;
   position: absolute;
   right: 30px;
 }
 
 .mascotjs .mascotjs-mascot {
-  background-color: #800099;
-  border-radius: 50%;
   display: inline-block;
-  height: 80px;
-  width: 80px;
+  max-height: 60px;
+  max-width: 60px;
 }
 
-.mascotjs .mascotjs-title {
-  background-color: #800099;
-  display: inline-block;
-  height: 80px;
+.mascotjs .mascotjs-title-wrapper {
+  align-items: center;
+  display: inline-flex;
+}
+
+.mascotjs .mascotjs-title-wrapper .mascotjs-title {
+  color: #fff;
+  max-width: 200px;
+  padding-right: 10px;
 }

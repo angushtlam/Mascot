@@ -1,10 +1,18 @@
+import {
+  getAnchorPointElementForMascot,
+  moveMascotToLocation,
+  moveMascotToStartingPosition
+ } from './position'
+
+import { setTooltip } from './tooltip'
+
 import { getAllElementsWithAttribute } from '../util/domElements'
 
 export function injectMascotHTML() {
   const htmlMascot = `
     <div class="mascotjs" id="mascotjs">
-      <div class="mascotjs-mascot"></div>
-      <div class="mascotjs-title">Title placeholder.</div>
+      <img class="mascotjs-mascot" src="mascot.png" />
+      <div id="mascotjs-title-wrapper" class="mascotjs-title-wrapper"></div>
     </div>
   `
   document.body.innerHTML += htmlMascot
@@ -33,7 +41,16 @@ export function addMascotBehaviorToElements() {
 
       // Add behaviors to the elements when they are hovered over.
       elem.onmouseover = () => {
-        // getMascotElement().
+        const vector = getAnchorPointElementForMascot(elem)
+        moveMascotToLocation(vector)
+        setTooltip(elem.getAttribute('data-title'))
+        // TODO: Add delay for reset.
+      }
+
+      elem.onmouseout = () => {
+        // TODO: After a second delay, if there has not been a new trigger, return to starting position.
+        moveMascotToStartingPosition()
+        setTooltip()
       }
     }
   }
