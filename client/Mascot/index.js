@@ -11,7 +11,7 @@ import { getAllElementsWithAttribute } from '../util/domElements'
 export function injectMascotHTML() {
   const htmlMascot = `
     <div class="mascotjs" id="mascotjs">
-      <img class="mascotjs-mascot" src="` + (config.mascotPath || 'mascot.png') + `" />
+      <img class="mascotjs-mascot" src="` + (config.mascotURL || 'mascot.png') + `" />
       <div id="mascotjs-title-wrapper" class="mascotjs-title-wrapper"></div>
     </div>
   `
@@ -29,7 +29,7 @@ export function injectMascotHTML() {
 // Keeps track of the Mascot's activity
 let inactiveTimeout = null
 const inactiveDelayInMs = config.mascotInactiveInMs || 1500
-const travelDelayInMs = config.mascotTravelDelayInMs || 500
+const travelDelayInMs = config.mascotMoveDelayInMs || 500
 let moveDelayTimeout = null // A delay that users can set to wait x seconds for the mascot to move.
 export function addMascotBehaviorToElements() {
   // Grabs all the elements from the page with a title tag.

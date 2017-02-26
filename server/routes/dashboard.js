@@ -16,10 +16,7 @@ router.get('/', isUserAuthenticated, (req, res) => {
   // Process job if one doesn't exist.
   if (!fs.existsSync(path.resolve(__dirname, '..', 'cdn', 'js', username + '.js')) ||
       !fs.existsSync(path.resolve(__dirname, '..', 'cdn', 'css', username + '.css'))) {
-    const job = backend.createJob({ username }).save()
-    job.on('progress', progress => {
-      console.log('Now processing job ' + progress + '.')
-    })
+    queueScriptUpdate(username, config)
   }
 
   res.render(path.resolve(__dirname, '..', 'templates', 'dashboard.ejs'), {
@@ -46,9 +43,9 @@ router.get('/mascot', isUserAuthenticated, (req, res) => {
         config
       })
 
-      console.log(err)
-      return
+      return console.log(err)
     }
+
     if (q) {
       config = Object.assign({}, config, {
         tooltipColor: q.tooltipColor,
@@ -74,6 +71,7 @@ router.post('/mascot', isUserAuthenticated, (req, res) => {
     mascotMoveDelayInMs: req.body.mascotMoveDelayInMs,
     mascotMoveTimeInMs: req.body.mascotMoveTimeInMs
   }
+  console.log(config)
 
   Settings.findOneAndUpdate({ _id: username }, {
     tooltipColor: config.tooltipColor,
@@ -82,13 +80,23 @@ router.post('/mascot', isUserAuthenticated, (req, res) => {
     mascotMoveDelayInMs: config.mascotMoveDelayInMs,
     mascotMoveTimeInMs: config.mascotMoveTimeInMs
 
-  }, { new: true }).exec((err, q) => {
+  }, { new: true, upsert: true }).exec((err, q) => {
     if (err) return console.log(err)
     res.render(path.resolve(__dirname, '..', 'templates', 'dashboard', 'mascot.ejs'), {
       message: 'Your settings have been updated! Your script will take a few moments to update.',
       config
     })
+
+    // Update scripts.
+    queueScriptUpdate(username, config)
   })
 })
+
+function queueScriptUpdate(username, config = {}) {
+  const job = backend.createJob({ username, config }).save()
+  job.on('progress', progress => {
+    console.log('Now processing job ' + progress + '.')
+  })
+}
 
 module.exports = router

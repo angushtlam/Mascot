@@ -13,22 +13,32 @@ var queue = new Queue('mascotBuilder')
 queue.process(function (job, done) {
   console.log('Processing job ' + job.id)
 
-  return done(null, compileMascot(job.data.username))
+  return done(null, compileMascot(job.data.username, job.data.config))
 })
 
-function compileMascot(username) {
-  compileMascotStyles(username)
-  compileMascotScript(username)
+function compileMascot(username, config) {
+  compileMascotStyles(username, config)
+  compileMascotScript(username, config)
 }
 
-function compileMascotScript(username) {
+function compileMascotScript(username, config) {
   console.log('Compiling Mascot Script for ' + username)
   fs.readFile(path.resolve(__dirname, '..', 'dist', 'mascot.js'), 'utf8', function (err, data) {
     if (err) {
       console.log(err)
     }
 
-    // console.log(data)
+    // Sorry for ghetto updating, not sorry
+    if (config !== {}) {
+      data = data.replace('var customConfig={}',
+        `var customConfig={
+          mascotURL: '` + config.mascotURL + `',
+          mascotInactiveInMs: ` + config.mascotInactiveInMs + `,
+          mascotMoveTimeInMs: '` + config.mascotMoveTimeInMs + `',
+          mascotMoveDelayInMs: '` + config.mascotMoveDelayInMs + `'
+        }`)
+    }
+
     fs.writeFile(path.resolve(__dirname, '../server/cdn/js/' + username + '.js'), data, { flag: 'w+' }, (err) => {
       if (err) return console.log(err)
       console.log('Mascot Script compiled for ' + username)
@@ -36,11 +46,15 @@ function compileMascotScript(username) {
   })
 }
 
-function compileMascotStyles(username) {
+function compileMascotStyles(username, config) {
   console.log('Compiling Mascot Styles for ' + username)
   fs.readFile(path.resolve(__dirname, '..', 'dist', 'mascot.css'), 'utf8', function (err, data) {
     if (err) {
       console.log(err)
+    }
+
+    if (config !== {}) {
+      data = data.replace('#800099', config.tooltipColor)
     }
 
     // console.log(data)
@@ -50,6 +64,5 @@ function compileMascotStyles(username) {
     })
   })
 }
-
 
 module.exports = queue

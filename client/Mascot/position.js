@@ -20,7 +20,7 @@ let startX = 0
 let startY = 0
 let magnitude = 0
 const travelRate = 0.025 // Works pretty well, not gonna bother making it travel
-const travelTimeInMs = config.mascotTravelTimeInMs || 600
+const travelTimeInMs = config.mascotMoveTimeInMs || 600
 // The interval thread that is ran by the moveMascotToLocation function.
 let moveInterval = null
 export function moveMascotToLocation(vector) {
