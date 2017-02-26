@@ -10,7 +10,7 @@ body {
   bottom: 30px;
   display: flex;
   margin: 10px 0 10px 10px;
-  position: absolute;
+  position: fixed;
   right: 30px;
 }
 

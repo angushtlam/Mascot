@@ -7,7 +7,6 @@ function init() {
   }
 
   addMascotBehaviorToElements()
-  console.log('Mascot loaded.')
 }
 
 // When the page loaded, run initialization functions.

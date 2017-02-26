@@ -1,3 +1,5 @@
+import config from '../config'
+
 // Finds the anchor point of the Mascot.
 // By default it anchors above the bottom left corner of the specified element.
 // Stretch goal: Customizable anchor location/modes. (Hover location, etc.)
@@ -17,16 +19,17 @@ let targetY = 0
 let startX = 0
 let startY = 0
 let magnitude = 0
-const travelRate = 0.025
-const travelTimeInMs = 600
+const travelRate = 0.025 // Works pretty well, not gonna bother making it travel
+const travelTimeInMs = config.mascotTravelTimeInMs || 600
 // The interval thread that is ran by the moveMascotToLocation function.
 let moveInterval = null
 export function moveMascotToLocation(vector) {
   // Cancel any previous threads moving the mascot.
   if (moveInterval !== null) clearInterval(moveInterval)
 
-  targetX = vector[0] // Change target locations.
-  targetY = vector[1]
+  // Change target locations. Do not allow them to go off the screen.
+  targetX = Math.min(vector[0], window.innerWidth - 200 - 90)
+  targetY = Math.min(vector[1], window.innerHeight - 90)
 
   magnitude = 0 // Reset magnitude
 
