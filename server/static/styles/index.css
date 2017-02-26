@@ -1,0 +1,48 @@
+.hero-section {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a36234+0,514268+100 */
+  background: #a36234; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #a36234 0%, #514268 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #a36234 0%,#514268 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #a36234 0%,#514268 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a36234', endColorstr='#514268',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  height: 100%;
+}
+
+.hero-section {
+  align-items: center;
+  display: flex;
+}
+
+.hero-section .hero {
+  width: 100%;
+}
+
+.hero-section .hero .hero-content {
+  text-align: center;
+}
+
+.hero-section .hero .hero-content-logo {
+  align-items: center;
+  display: inline-flex;
+}
+
+.hero-section .hero .hero-content-text {
+  display: inline-block;
+}
+
+.hero-section .hero .hero-content-text h1 {
+  color: #fff;
+  font-family: 'Monoton', cursive;
+  font-size: 5.0rem;
+  text-transform: uppercase;
+}
+
+.hero-section .hero .hero-content-text h2 {
+  color: #fff;
+  font-sze: 2.0rem;
+}
+
+.hero-section .hero .hero-content img {
+  height: auto;
+  width: 300px;
+}

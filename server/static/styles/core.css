@@ -1,0 +1,52 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Cabin', sans-serif;
+}
+
+.overview {
+  padding: 100px 0;
+}
+
+.footer {
+  background-color: #232323;
+  color: #fff;
+  padding: 100px 0;
+  /*height: 400px;*/
+}
+
+/* Change bootstrap */
+.navbar {
+  font-weight: 700;
+  position: absolute;
+  width: 100%;
+}
+
+.navbar .navbar-brand {
+  color: #fff;
+  font-family: 'Monoton', cursive;
+  font-size: 2.0rem;
+  text-transform: uppercase;
+}
+
+.btn {
+  border-radius: 30px;
+  font-family: 'Cabin', sans-serif;
+  font-weight: 700;
+  padding: 10px 40px;
+  margin: 0 10px;
+}
+
+.btn-primary {
+  background-color: #514268;
+  border-color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #342749;
+  border-color: #fff;
+}
