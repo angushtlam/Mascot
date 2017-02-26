@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication | MascotJS</title>
+    <%- include partials/meta.ejs %>
+    <link rel="stylesheet" type="text/css" href="/static/styles/auth.css">
+</head>
+<body>
+<!-- Login -->
+<section class="auth-section">
+  <div class="container">
+    <div class="branding">
+      <a href="/"><h1>MascotJS</h1></a>
+      <p><%= message ? message : 'User Authentication' %></p>
+    </div>
+    <div class="auth">
+      <div class="row">
+        <div class="col">
+          <div class="register">
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Username</label>
+                <div class="col-8">
+                  <input class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Password</label>
+                <div class="col-8">
+                  <input class="form-control" type="password" name="password" placeholder="hunter2">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Password Again</label>
+                <div class="col-8">
+                  <input class="form-control" type="password" name="passwordAgain" placeholder="hunter2">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Email</label>
+                <div class="col-8">
+                  <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-secondary" type="submit">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col">
+          <div class="login">
+            <h2>Log In</h2>
+            <form action="/login" method="POST">
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Username</label>
+                <div class="col-8">
+                  <input class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Password</label>
+                <div class="col-8">
+                  <input class="form-control" type="password" name="password" placeholder="hunter2">
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-primary" type="submit">Log In</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts -->
+
+<%- include partials/scripts.ejs %>
+</body>
+</html>

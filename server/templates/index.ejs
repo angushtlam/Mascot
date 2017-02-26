@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>MascotJS</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Monoton|Cabin:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/styles/core.css">
-    <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
+  <title>MascotJS</title>
+  <%- include partials/meta.ejs %>
+  <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
 </head>
+
 <body>
 <!-- Header -->
 <nav class="navbar navbar-toggleable-md navbar-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#header-navbar" aria-controls="header-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">MascotJS</a>
+  <a class="navbar-brand" href="/">MascotJS</a>
 
   <div class="collapse navbar-collapse" id="header-navbar">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">What is MascotJS?</a>
+        <a class="nav-link" href="/about">What is MascotJS?</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Getting Started</a>
+        <a class="nav-link" href="/start">Getting Started</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Documentation</a>
+        <a class="nav-link" href="/docs">Documentation</a>
       </li>
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">User Dashboard</a>
+        <a class="nav-link" href="/dashboard">User Dashboard</a>
       </li>
     </ul>
   </div>
@@ -48,12 +45,12 @@
         <img src="/static/assets/mascot.png" />
         <div class="hero-content-text">
           <h1>MascotJS</h1>
-          <h2>Bring a face to your website!</h2>
+          <h2>Put a friendly face on your website!</h2>
         </div>
       </div>
       <br />
-      <button type="button" class="btn btn-secondary btn-lg">Features</button>
-      <button type="button" class="btn btn-primary btn-lg">Get Started</button>
+      <a href="/about"><button type="button" class="btn btn-secondary btn-lg">Features</button></a>
+      <a href="/dashboard"><button type="button" class="btn btn-primary btn-lg">I want a Mascot!</button></a>
     </div>
   </div>
 </section>
@@ -79,7 +76,6 @@
 </section>
 
 <!-- Scripts -->
-<script src="/static/lib/jquery/jquery.min.js"></script>
-<script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+<%- include partials/scripts.ejs %>
 </body>
 </html>

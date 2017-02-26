@@ -2,8 +2,8 @@
 const mongoose = require('mongoose')
 
 // Custom imports
-const schema = require('../schemas/users')
+const schema = require('../schemas/settings')
 
-const model = mongoose.model('User', schema)
+const model = mongoose.model('Settings', schema)
 
 module.exports = model

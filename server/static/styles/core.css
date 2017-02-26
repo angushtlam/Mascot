@@ -24,6 +24,7 @@ body {
   font-weight: 700;
   position: absolute;
   width: 100%;
+  z-index: 1000;
 }
 
 .navbar .navbar-brand {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard | MascotJS</title>
+  <%- include partials/meta.ejs %>
+  <link rel="stylesheet" type="text/css" href="/static/styles/dashboard.css">
+</head>
+
+<body>
+<%- include partials/dashboard/header.ejs %>
+
+<div class="dashboard-background"></div>
+
+
+<div class="container content-wrapper">
+  <div class="content">
+    <h1>Dashboard</h1>
+    <h3 title="We missed you!">Welcome back to MascotJS!</h3>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <p>The status of your Mascot is...</p>
+    <h3 id="mascot-status">Checking...</h3>
+    <p id="mascot-status-detail">I am looking into the status of your Mascot script right now...</p>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <hr />
+
+    <p>To use your Mascot, insert the &lt;link&gt; code into the header, and the &lt;script&gt; code into the footer.</p>
+    <em>CSS</em><br />
+    <input value='<link rel="stylesheet" type="text/css" href="http://mascotjs.min.js/cdn/js/<%= username %>.css"'></input>
+    <br />
+    <br />
+    <em>Javascript</em><br />
+    <input value='<script src="http://mascotjs.min.js/cdn/js/<%= username %>.js"></script>'></input>
+    <p>
+  </div>
+</div>
+
+<div class="hidden-data">
+  <div id="profile-username"><%= username %></div>
+</div>
+
+<%- include partials/scripts.ejs %>
+<script src="/static/scripts/cdn_file_check.js"></script>
+</body>

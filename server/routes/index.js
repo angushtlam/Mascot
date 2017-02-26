@@ -1,6 +1,8 @@
 var express = require('express')
-var router = express.Router()
+var app = express()
 
-router.use('/', require('./landing'))
+app.use(require('./landing'))
+app.use(require('./auth'))
+app.use(require('./dashboard'))
 
-module.exports = router
+module.exports = app

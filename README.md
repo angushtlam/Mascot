@@ -10,12 +10,13 @@ TODO:
 * Converts all title tags to data-title to remove default behavior
 * Make the mascot move to title'd elements on page when they are hovered
 * Stretch Goals:
-  * Make the
+  * Make custom fields
 
 ## Server
 * Built with Node, Express, Mongo
 
 ### Web Dashboard
+* Login/Register
 * Provide the user with the script CDN
 * Access to user analytics
   * See what elements are used the most
@@ -27,3 +28,19 @@ TODO:
 ### Backend
 * Receives data from clients
 * Puts into database
+* Sets up script for users to use for their site
+
+
+HTML
+CSS
+Webpack
+jQuery
+Node
+Bootstrap
+Express
+MongoDB
+Mongoose
+EJS
+Redis
+---
+Heroku

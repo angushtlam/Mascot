@@ -1,7 +1,8 @@
+// Library imports.
 const mongoose = require('mongoose')
 
-exports.connect = function (mongoDbUri) {
-  mongoose.connect(mongoDbUri)
+exports.connect = function (databaseURI) {
+  mongoose.connect(databaseURI)
   const db = mongoose.connection
 
   console.log('Initiating database connection...')

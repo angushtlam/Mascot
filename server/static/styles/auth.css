@@ -1,0 +1,40 @@
+.branding {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.branding h1 {
+  color: #000;
+  font-family: 'Monoton', cursive;
+  font-size: 3.6rem;
+  text-transform: uppercase;
+}
+
+.branding a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.auth-section {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.auth-section .auth {
+  /*padding: 50px 50px 100px 50px;*/
+  width: 100%;
+}
+
+.register,
+.login {
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 50px;
+}
+
+.register h2,
+.login h2 {
+  font-weight: 700;
+}
