@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Mascot | MascotJS</title>
+  <%- include ../partials/meta.ejs %>
+  <link rel="stylesheet" type="text/css" href="/static/styles/dashboard.css">
+</head>
+
+<body>
+<%- include ../partials/dashboard/header.ejs %>
+
+<div class="dashboard-background"></div>
+
+
+<div class="container content-wrapper">
+  <div class="content">
+    <h1>My Mascot</h1>
+    <h3 title="Change me!">You can change your settings here, and it will update your Mascot <em>automagically</em>.</h3>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <form method="POST">
+      <h5>Tooltip Color</h5>
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Tooltip Color</label>
+        <div class="col-8">
+          <input class="form-control" name="tooltipColor" type="color" value="<%= config.tooltipColor %>">
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Mascot URL</label>
+        <div class="col-8">
+          <input class="form-control" name="mascotURL" type="url" value="<%= config.mascotURL %>">
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Mascot Move Speed</label>
+        <div class="col-8">
+          <input class="form-control" name="mascotMoveTimeInMs" type="number" value="<%= config.mascotMoveTimeInMs %>">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Mascot Move Delay</label>
+        <div class="col-8">
+          <input class="form-control" name="mascotMoveDelayInMs" type="number" value="<%= config.mascotMoveDelayInMs %>">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">Mascot Inactive Delay</label>
+        <div class="col-8">
+          <input class="form-control" name="mascotInactiveInMs" type="number" value="<%= config.mascotInactiveInMs %>">
+        </div>
+      </div>
+
+      <br />
+      <br />
+
+      <button class="btn btn-primary" type="submit">Update Settings</button>
+    </form>
+  </div>
+</div>
+
+<%- include ../partials/scripts.ejs %>
+</body>

@@ -3,6 +3,6 @@ var app = express()
 
 app.use(require('./landing'))
 app.use(require('./auth'))
-app.use(require('./dashboard'))
+app.use('/dashboard', require('./dashboard'))
 
 module.exports = app

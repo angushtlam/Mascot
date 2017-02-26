@@ -38,3 +38,7 @@
 input {
   width: 75%;
 }
+
+form {
+  padding: 0 100px;
+}
