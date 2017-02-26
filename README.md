@@ -42,5 +42,5 @@ MongoDB
 Mongoose
 EJS
 Redis
----
+Bee Queue
 Heroku
